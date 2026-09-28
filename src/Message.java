@@ -2,11 +2,13 @@ public class Message {
     private String messageId;
     private String payload;
     private int retryCount;
+    private int successChance;
 
-    public Message(String messageId, String payload) {
+    public Message(String messageId, String payload, int successChance) {
         this.messageId = messageId;
         this.payload = payload;
         this.retryCount = 0;
+        this.successChance = successChance;
     }
 
     public String getMessageId() {
@@ -21,6 +23,10 @@ public class Message {
         return retryCount;
     }
 
+    public int getSuccessChance() {
+        return successChance;
+    }
+
     public void incrementRetryCount() {
         retryCount++;
     }
@@ -29,6 +35,7 @@ public class Message {
     public String toString() {
         return "Message{id='" + messageId +
                 "', payload='" + payload +
-                "', retryCount=" + retryCount + "}";
+                "', retryCount=" + retryCount +
+                ", successChance=" + successChance + "}";
     }
 }
